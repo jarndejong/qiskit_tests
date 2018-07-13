@@ -68,7 +68,7 @@ if __name__ == '__main__':
     print("Local backends: ", available_backends({'local': True}))
     
     # Compile and run the Quantum circuit on a simulator backend
-    job_sim = execute(qc, "local_qasm_simulator",shots=100)
+    job_sim = execute(qc, "local_qasm_simulator",shots=10000)
     sim_result = job_sim.result()
     
     circuit_drawer(qc)
