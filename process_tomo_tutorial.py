@@ -80,3 +80,6 @@ cnot_tomo_results = Q_program.execute(cnot_tomo_circuits, shots=shots, backend=b
 cnot_process_data = tomo.tomography_data(cnot_tomo_results,'cnot',cnot_tomo_set)
 cnot_choi_fit = tomo.fit_tomography_data(cnot_process_data,'leastsq',options={'trace':4})
 plot_state(cnot_choi_fit,'city')
+
+U_swap = np.array([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]])
+swap_choi = outer(vectorize(U_swap))

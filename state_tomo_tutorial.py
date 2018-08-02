@@ -71,7 +71,7 @@ for name in bell_tomo_circuit_names:
 backend = 'local_qasm_simulator'
 
 # Take 5000 shots for each measurement basis
-shots = 5
+shots = 5000
 
 # Run the simulation
 bell_tomo_result = Q_program.execute(bell_tomo_circuit_names, backend=backend, shots=shots)
@@ -88,6 +88,7 @@ pur = purity(rho_fit)
 
 # plot 
 plot_state(rho_fit, 'paulivec')
+plot_state(rho_fit,'city')
 print('Fidelity =', F_fit)
 print('concurrence = ', str(con))
 print('purity = ', str(pur))
