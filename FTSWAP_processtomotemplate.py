@@ -81,7 +81,7 @@ qc.cx(q[2], q[1])
 
 
 # Set number of shots and backend
-shots = 500
+shots = 50000
 backend = 'local_qasm_simulator'
 
 
@@ -106,5 +106,7 @@ print('Perfect Choi matrix for Swap operation:')
 plot_state(swap_choi,'city')
 
 print('Fitted Choi matrix from simulations using tomography:')
-
 plot_state(swap_choi_fit,'city')
+
+# Analyse data
+print('Process Fidelity = ', state_fidelity(vectorize(U_swap)/2, swap_choi_fit/4))
