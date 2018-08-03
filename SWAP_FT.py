@@ -21,8 +21,6 @@ if __name__ == '__main__':
     qc = QuantumCircuit(q, c)
     
     
-    qc.h(q[0])
-    
     # Swap gate between qubit 0 and 2 as 3 CX's
     # CX from qubit 2 to qubit 0
     qc.cx(q[2], q[0]) 
@@ -81,7 +79,7 @@ if __name__ == '__main__':
     cr = ClassicalRegister(2)
     
     # Create the tomography set
-    tomo_set = tomo.process_tomography_set([0, 1],'Pauli','Pauli')
+    tomo_set = tomo.process_tomography_set([1, 0],'Pauli','Pauli')
     tomo_circuits = tomo.create_tomography_circuits(processprogram, 'FTSWAP',qr,cr,tomo_set)
     
     
@@ -99,9 +97,3 @@ if __name__ == '__main__':
     #rho_fit = tomo.fit_tomography_data(tomo_data)
     
     #plot_state(rho_fit, 'paulivec')
-    
-    
-    circuit_drawer(qc)
-    # Show the results
-    print("simulation: ", sim_result)
-    print(sim_result.get_counts(qc))
