@@ -55,7 +55,7 @@ qc.cx(q[1], q[0])
 
 
 # Set number of shots and backend
-shots = 1000000
+shots = 100000
 backend = 'local_qasm_simulator'
 
 
@@ -84,3 +84,7 @@ plot_state(swap_choi_fit,'city')
 
 # Analyse data
 print('Process Fidelity = ', state_fidelity(vectorize(U_swap)/2, swap_choi_fit/4))
+
+diff = sum(sum(abs(swap_choi-swap_choi_fit)))/(2**2)
+print('Total difference is:',diff)
+

@@ -81,7 +81,7 @@ qc.cx(q[2], q[1])
 
 
 # Set number of shots and backend
-shots = 50000
+shots = 200
 backend = 'local_qasm_simulator'
 
 
@@ -90,7 +90,7 @@ tomo_set = tomo.process_tomography_set([1,0],'Pauli','Pauli')
 tomo_circuits = tomo.create_tomography_circuits(Q_program,'FTSWAP',q,c,tomo_set)
 
 # Execute the tomo circuits
-tomo_results = Q_program.execute(tomo_circuits, shots=shots, backend=backend,timeout=300)
+tomo_results = Q_program.execute(tomo_circuits, shots=shots, backend=backend,timeout=30)
 
 
 # Gather data from the results
@@ -110,3 +110,6 @@ plot_state(swap_choi_fit,'city')
 
 # Analyse data
 print('Process Fidelity = ', state_fidelity(vectorize(U_swap)/2, swap_choi_fit/4))
+
+diff = sum(sum(abs(swap_choi-swap_choi_fit)))/(2**2)
+print('Total difference is:',diff)
